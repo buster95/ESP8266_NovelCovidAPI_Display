@@ -2,17 +2,15 @@
 #include <ESP8266WiFi.h>
 #include <ESP8266HTTPClient.h>
 #include <WiFiClientSecureBearSSL.h>
-// This library to json management
 #include <Arduino_JSON.h>
 
 const char* ssid = "WYLCD";
 const char* pwd = "corrales@2020.*.";
-unsigned long lastTime = 0;
-unsigned long timerDelay = 1000;
+unsigned long lastTime = millis()+3E5;
+unsigned long timerDelay = 3E5; // Every 5min
 const char* serverPath = "https://disease.sh/v2/all";
 
 void setup() {
-  // put your setup code here, to run once:
   Serial.begin(115200);
   WiFi.begin(ssid, pwd);
   Serial.println("Connecting");
@@ -28,11 +26,8 @@ void setup() {
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-  //Send an HTTP POST request every 10 minutes
   if ((millis() - lastTime) > timerDelay) {
-    //Check WiFi connection status
-    if(WiFi.status()== WL_CONNECTED){
+    if(WiFi.status()== WL_CONNECTED){ //Check WiFi connection status
       JSONVar myObject = JSON.parse(httpGETRequest(serverPath));
       if (JSON.typeof(myObject) == "undefined") {
         Serial.println("Parsing input failed!");
@@ -52,12 +47,8 @@ String httpGETRequest(const char* serverName) {
   client->setInsecure();
   HTTPClient http;
 
-  // Your IP address with path or Domain name with URL path 
   http.begin(*client, serverName);
-
-  // Send HTTP POST request
-  int httpCode = http.GET();
-
+  int httpCode = http.GET(); //Sending Request
   String payload = "{}"; 
 
   if (httpCode == HTTP_CODE_OK) {
@@ -68,8 +59,7 @@ String httpGETRequest(const char* serverName) {
     Serial.print("Error code: ");
     Serial.println(httpCode);
   }
-  // Free resources
-  http.end();
-
+  
+  http.end(); // Free resources
   return payload;
 }
