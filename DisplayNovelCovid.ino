@@ -10,6 +10,10 @@ unsigned long lastTime = millis()+3E5;
 unsigned long timerDelay = 3E5; // Every 5min
 const char* serverPath = "https://disease.sh/v2/all";
 
+// int lcdColumns = 16;
+// int lcdRows = 2;
+// LiquidCrystal_I2C lcd(0x27, lcdColumns, lcdRows);
+
 void setup() {
   Serial.begin(115200);
   WiFi.begin(ssid, pwd);
@@ -21,8 +25,19 @@ void setup() {
   Serial.println("");
   Serial.print("Connected to WiFi network with IP Address: ");
   Serial.println(WiFi.localIP());
- 
-  Serial.println("Timer set to 5 seconds (timerDelay variable), it will take 5 seconds before publishing the first reading.");
+  Serial.println("This will publish each 5min");
+
+  /*
+   * Follow Instructions in Readme for connections
+   */
+  // set LCD address, number of columns and rows
+  // if you don't know your display address, run an I2C scanner sketch
+  // lcd.init();
+  // lcd.backlight();
+  // lcd.setCursor(0, 0); // Set cursor to row column 0, row 0
+  // lcd.print("COVID19 CASES");
+  // lcd.setCursor(0, 1); // Set cursor to column 0, row 1
+  // lcd.print("Reading...");
 }
 
 void loop() {
@@ -34,6 +49,7 @@ void loop() {
         return;
       }
       Serial.println(myObject["cases"]);
+      // lcd.print(myObject["cases"]); // print message
     }
     else {
       Serial.println("WiFi Disconnected");
