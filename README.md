@@ -9,12 +9,10 @@ Display to show covid19 cases in realtime
 
 In my case I'm using ESP8266 (NodeMCU)
 <br>
-<br>
 
 # Libraries
 * Arduino_JSON (Official) `you can download from Arduino IDE`
 * [LiquidCrystal_I2C](https://github.com/marcoschwartz/LiquidCrystal_I2C)
-<br>
 <br>
 
 # Connection Schemes
@@ -27,12 +25,10 @@ You can also wire your LCD to the ESP8266 by following the next schematic diagra
 You can also use the following table as a reference.
 | LCD (16x2) I2C | ESP8266 |
 |:---------------|:--------| 
-GND	| <i style="background:#333; border-radius:3px; padding:5px;">GND</i>
-VCC	| <i style="background:#cc3333; border-radius:3px; padding:5px;">VIN</i>
-SDA | <i style="background:#009900; border-radius:3px; padding:5px;">GPIO 4</i> (D2)
-SCL | <i style="background:#0066cc; border-radius:3px; padding:5px;">GPIO 5</i> (D1)
-<br>
-<br>
+GND	| <img src="https://img.shields.io/badge/-GND-black?style=flat"/>
+VCC	| <img src="https://img.shields.io/badge/-VIN-red?style=flat"/>
+SDA | <img src="https://img.shields.io/badge/-GPIO 4-GREEN?style=flat"/> (D2)
+SCL | <img src="https://img.shields.io/badge/-GPIO 5-blue?style=flat"/> (D1)
 
 ## Wiring the LCD to the ESP32
 Wire your LCD to the ESP32 by following the next schematic diagram. We’re using the ESP32 default I2C pins (GPIO 21 and GPIO 22).
@@ -42,8 +38,8 @@ Wire your LCD to the ESP32 by following the next schematic diagram. We’re usin
 
 You can also use the following table as a reference.
 | LCD (16x2) I2C | ESP8266 |
-|:---------------|:--------| 
-GND	| <i style="background:#333; border-radius:3px; padding:5px;">GND</i>
-VCC	| <i style="background:#cc3333; border-radius:3px; padding:5px;">VIN</i>
-SDA | <i style="background:#009900; border-radius:3px; padding:5px;">GPIO 21</i>
-SCL | <i style="background:#0066cc; border-radius:3px; padding:5px;">GPIO 22</i>
+|:---------------|:--------|
+GND	| <img src="https://img.shields.io/badge/-GND-black?style=flat"/>
+VCC	| <img src="https://img.shields.io/badge/-VIN-red?style=flat"/>
+SDA | <img src="https://img.shields.io/badge/-GPIO 21-green?style=flat"/>
+SCL | <img src="https://img.shields.io/badge/-GPIO 22-blue?style=flat"/>
